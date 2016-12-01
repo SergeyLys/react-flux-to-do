@@ -1,0 +1,54 @@
+.task-list {
+  margin-top: 10px;
+}
+
+.Task {
+  position: relative;
+  padding: 10px;
+  animation: slideDown .3s ease;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    .Task__del-icon {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.Task__del-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+}
+
+.Task__complete-icon {
+  display: inline-block !important;
+  width: 24px !important;
+}
+
+
+.Task__text {
+  padding-right: 10px;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: .5;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
