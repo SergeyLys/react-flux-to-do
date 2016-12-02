@@ -11,7 +11,6 @@ let _loadingError = null;
 let _isLoading = true;
 
 function formatTask(task) {
-    //console.log(task.complete);
     return {
         id: task._id,
         text: task.text,
@@ -45,7 +44,6 @@ AppDispatcher.register(function(action) {
     switch(action.type) {
         case actions.LOAD_TASK_REQUEST: {
             _isLoading = true;
-
             TasksStore.emitChange();
             break;
         }
@@ -53,10 +51,8 @@ AppDispatcher.register(function(action) {
         case actions.LOAD_TASK_SUCCESS: {
             _isLoading = false;
             _tasks = action.models.map( formatTask );
-            console.log(_tasks);
             _loadingError = null;
             TasksStore.emitChange();
-
             break;
         }
 

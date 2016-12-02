@@ -8,11 +8,11 @@ const api = {
         return axios.get(`http://localhost:8080/models`);
     },
 
-    createTask(data) {
-        return axios.post(`http://localhost:8080/models`, data);
+    completeTask(taskId) {
+        return axios.put(`http://localhost:8080/models/${taskId}`);
     },
 
-    completeTask(data) {
+    createTask(data) {
         return axios.post(`http://localhost:8080/models`, data);
     },
 
@@ -45,10 +45,14 @@ const ListActions = {
             );
     },
 
-    completeTask(task) {
-        task.complete = true;
-        this.loadList()
-
+    completeTask(taskId) {
+        api.completeTask(taskId)
+            .then(() =>
+                this.loadList()
+            )
+            .catch(err =>
+                console.error(err)
+            );
     },
 
     createTask(list) {

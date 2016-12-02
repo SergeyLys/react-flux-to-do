@@ -5,10 +5,13 @@ import ReactDOM from 'react-dom';
 //import Comment from './proptypes';
 //import comments from './proptypes';
 
-
-// Application components
+//Flux
 import TasksStore from './stores/listStore';
 import ListActions from './actions/actions';
+
+
+// Application components
+import Login from './components/Login';
 import Task from './components/Task';
 import ListEditor from './components/ListEditor';
 import List from './components/List';
@@ -21,8 +24,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-//import injectTapEventPlugin from 'react-tap-event-plugin';
-//injectTapEventPlugin();
+
 
 function getStateFromFlux() {
     return {
@@ -58,7 +60,7 @@ class App extends React.Component {
     }
 
     handleTaskComplete(task) {
-        ListActions.completeTask(task)
+        ListActions.completeTask(task.id)
     }
 
     onChange() {
@@ -69,11 +71,13 @@ class App extends React.Component {
         return (
             <div>
                 <ListEditor onListAdd={this.handleListAdd.bind(this)} />
-                <List tasks={this.state.tasks} onTaskComplete={this.handleTaskComplete.bind(this)} onListDelete={this.handleListDelete.bind(this)} />
+                <List id="id" tasks={this.state.tasks} onTaskComplete={this.handleTaskComplete.bind(this)} onListDelete={this.handleListDelete.bind(this)} />
             </div>
         )
     }
 }
+
+// Login form component <Login />
 
 class Main extends React.Component {
     render() {
@@ -84,6 +88,7 @@ class Main extends React.Component {
         )
     }
 }
+
 
 ReactDOM.render(
     //<App />,

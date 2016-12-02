@@ -15,6 +15,13 @@
       visibility: visible;
     }
   }
+
+  &.checked {
+    .Task__text {
+      opacity: .5;
+      text-decoration: line-through;
+    }
+  }
 }
 
 .Task__del-icon {
@@ -24,6 +31,7 @@
   opacity: 0;
   visibility: hidden;
   transition: all .3s ease;
+  z-index: 1;
 }
 
 .Task__complete-icon {
